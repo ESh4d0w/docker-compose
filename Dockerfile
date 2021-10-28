@@ -17,7 +17,7 @@ RUN apk add --no-cache \
 		git \
 		curl
 
-RUN pip install "docker-compose"
+RUN pip install --upgrade pip && pip install "docker-compose"
 
 RUN addgroup -S -g 1000 docker && adduser -S -G docker -u 1000 docker
 
