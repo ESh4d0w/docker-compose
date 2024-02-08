@@ -25,8 +25,8 @@ RUN chmod 755 /usr/local/bin/docker-compose
 RUN chmod 755 /usr/bin/docker-compose
 
 RUN docker --version && \
-    docker-compose --version && \
-    docker-compose2 --version && \
+    docker-compose version && \
+    docker-compose2 version && \
     git --version
 
 ENTRYPOINT ["docker-entrypoint.sh"]
