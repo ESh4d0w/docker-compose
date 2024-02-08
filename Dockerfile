@@ -17,12 +17,16 @@ RUN apk add --no-cache \
 		git \
 		curl
 
-RUN pip install --upgrade pip && pip install "docker-compose"
+RUN apk add --no-cache docker-cli-compose && mv /usr/local/bin/docker-compose /usr/local/bin/docker-compose2 && mv /usr/bin/docker-compose /usr/bin/docker-compose2
 
-RUN addgroup -S -g 1000 docker && adduser -S -G docker -u 1000 docker
+COPY docker-compose /usr/bin/docker-compose
+COPY docker-compose /usr/local/bin/docker-compose
+RUN chmod 755 /usr/local/bin/docker-compose
+RUN chmod 755 /usr/bin/docker-compose
 
 RUN docker --version && \
     docker-compose --version && \
+    docker-compose2 --version && \
     git --version
 
 ENTRYPOINT ["docker-entrypoint.sh"]

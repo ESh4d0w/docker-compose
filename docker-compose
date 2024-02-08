@@ -1,0 +1,3 @@
+#!/bin/sh
+#for compatibility for older pipelines
+exec docker compose "$@"
