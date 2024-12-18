@@ -29,4 +29,5 @@ RUN docker --version && \
 	git --version
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+
 CMD ["sh"]
